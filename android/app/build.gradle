@@ -3,6 +3,8 @@ plugins {
     id "kotlin-android"
     // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
     id "dev.flutter.flutter-gradle-plugin"
+
+    id 'com.google.gms.google-services' // WAJIB ADA untuk Firebase
 }
 
 android {
@@ -28,7 +30,15 @@ android {
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
         versionName = flutter.versionName
+        minSdk = 21
+        targetSdk = 34
+        minSdkVersion 21  // Atur nilai yang sesuai
+        targetSdkVersion 33  // Bisa disesuaikan dengan versi Gradle yang digunakan
+        versionCode = 1
+        versionName = "1.0"
     }
+
+      compileSdk = 34
 
     buildTypes {
         release {
@@ -41,4 +51,9 @@ android {
 
 flutter {
     source = "../.."
+}
+
+dependencies {
+    implementation platform('com.google.firebase:firebase-bom:30.2.0') // Gunakan versi lama BOM
+    implementation 'com.google.firebase:firebase-auth:21.0.0' // Gunakan versi lama Firebase Auth
 }
